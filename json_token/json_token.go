@@ -13,10 +13,11 @@ const (
 	COLON = ":"
 	COMMA = ","
 
-	LPAREN  = "("
-	RPAREN  = ")"
-	LBRAKET = "["
-	RBRAKET = "]"
-	LBRACE  = "{"
-	RBRACE  = "}"
+	LPAREN      = "("
+	RPAREN      = ")"
+	LBRAKET     = "["
+	RBRAKET     = "]"
+	LBRACE      = "{"
+	RBRACE      = "}"
+	DOUBLEQUOTE = "\""
 )
