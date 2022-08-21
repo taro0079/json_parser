@@ -53,8 +53,14 @@ func (l *Lexer) NextToken() json_token.Token {
 		tok.Type = json_token.EOF
 	default:
 		if isLetter(l.ch) {
+			// 文字列を読み取る
 			tok.Literal = l.readIdentifier()
 			tok.Type = json_token.IDENT
+			return tok
+		} else if isDigit(l.ch) {
+			// 数字を読み取る
+			tok.Type = json_token.INT
+			tok.Literal = l.readNumber()
 			return tok
 		}
 	}
@@ -83,4 +89,17 @@ func (l *Lexer) skipWhitespace() {
 	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
 		l.readChar()
 	}
+}
+
+func (l *Lexer) readNumber() string {
+	position := l.position
+	for isDigit(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position] // 数字部分だけを切り出して出力
+
+}
+
+func isDigit(ch byte) bool {
+	return '0' <= ch && ch <= '9'
 }

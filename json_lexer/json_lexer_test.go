@@ -6,7 +6,7 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	input := `{"test":["ttt"]}`
+	input := `{"test":["ttt":"123"]}`
 	tests := []struct {
 		expectedType    json_token.Type
 		expectedLiteral string
@@ -19,6 +19,10 @@ func TestNextToken(t *testing.T) {
 		{json_token.LBRAKET, "["},
 		{json_token.DOUBLEQUOTE, "\""},
 		{json_token.IDENT, "ttt"},
+		{json_token.DOUBLEQUOTE, "\""},
+		{json_token.COLON, ":"},
+		{json_token.DOUBLEQUOTE, "\""},
+		{json_token.INT, "123"},
 		{json_token.DOUBLEQUOTE, "\""},
 		{json_token.RBRAKET, "]"},
 		{json_token.RBRACE, "}"},

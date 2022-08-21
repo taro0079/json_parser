@@ -10,6 +10,7 @@ type Token struct {
 const (
 	EOF   = "EOF"
 	IDENT = "IDENT"
+	INT   = "INT"
 	COLON = ":"
 	COMMA = ","
 
